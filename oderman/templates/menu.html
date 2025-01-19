@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Меню - Піцерія Oderman{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Меню</h2>
+
+    <!-- Кнопки сортировки -->
+    <div class="sort-buttons">
+        <a href="/menu?sort=asc" class="sort-link {% if sort_order == 'asc' %}active{% endif %}">
+            Сортувати за зростанням
+        </a>
+        <a href="/menu?sort=desc" class="sort-link {% if sort_order == 'desc' %}active{% endif %}">
+            Сортувати за спаданням
+        </a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Назва піци</th>
+            <th>Опис інгредієнтів</th>
+            <th>Ціна</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pizza in pizzas %}
+        <tr>
+            <td>{{ pizza[1] }}</td>
+            <td>{{ pizza[2] }}</td>
+            <td>{{ pizza[3] }} грн</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="add-button">
+        <a href="/add" class="btn btn-primary">Додати нову піцу</a>
+    </div>
+
+    <a href="/" class="back-link">Повернутися на головну</a>
+</div>
+{% endblock %}
